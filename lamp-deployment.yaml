@@ -22,7 +22,7 @@ spec:
               mountPath: /usr/local/apache2/htdocs/
           livenessProbe:
             httpGet:
-              path: /index.php
+              path: /index.html
               port: 80
             initialDelaySeconds: 30
             periodSeconds: 10
@@ -38,6 +38,13 @@ spec:
           volumeMounts:
             - name: mysql-data
               mountPath: /var/lib/mysql/
+          livenessProbe:
+            tcpSocket:
+              port: 3306
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
         - name: phpmyadmin
           image: phpmyadmin/phpmyadmin
           env:
@@ -46,7 +53,20 @@ spec:
             - name: MYSQL_ROOT_PASSWORD
               value: password
           ports:
-            - containerPort: 80
+            - containerPort: 8080
+          volumeMounts:
+            - name: web-content
+              mountPath: /var/www/html
+            - name: mysql-data
+              mountPath: /var/lib/mysql
+          livenessProbe:
+            httpGet:
+              path: /index.php
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
       volumes:
         - name: web-content
           hostPath:
@@ -54,3 +74,4 @@ spec:
         - name: mysql-data
           hostPath:
             path: /path/to/local/mysql/data
+      restartPolicy: Always
