@@ -14,6 +14,8 @@ Once everything is installed, you can start Minikube by running the command <sup
 
 Once your Minikube is launched, you can then connect to Lens and access your Minikube interface, which should be empty except for some default files.
 
+/!\ I use Minikube v1.27.0. I don't know if it makes any difference for the assignment.
+
 ## Automatic deployment of Docker containers.
 Firstly, we will use the command "docker run --name apache bitnami/apache:latest" to fetch the latest Bitnami image from Docker Hub. 
 ![image](https://user-images.githubusercontent.com/118971209/234866025-739ecf71-a57b-41e9-8455-f04b91441d9d.png)
