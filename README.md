@@ -5,7 +5,7 @@ We were unable to execute commands on a Windows environment, so we decided to sw
 - Minikube
 - Lens (to view the details of Minikube easily)
 Please note that Lens is optional but recommended for a better experience.
-- Kubectl (Optional) (https://github.com/AsTheLow/TP-Docker-Gautherot-Lantillon/edit/main/README.md#automatic-deployment-of-docker-containers)
+- Kubectl (Optional) (https://github.com/AsTheLow/TP-Docker-Gautherot-Lantillon/blob/main/README.md#kubectl-configure-optional)
 
 # Install Minikube
 Firstly, you need to install Minikube (https://kubernetes.io/fr/docs/tasks/tools/install-minikube/).
