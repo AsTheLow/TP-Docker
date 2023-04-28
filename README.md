@@ -31,14 +31,14 @@ First, I will create a new namespace to avoid conflicts with my other namespaces
 
 
 
-#Waterloo Algorithmics
+# Waterloo Algorithmics
 
 Welcome to my personal section where I share some of the fantasies I embarked on, which unfortunately resulted in failure. However, as a Japanese proverb says, "Failure teaches more than success."
 
 ##Trying to do everything on the same deployment and therefore on the same pod.
 When I started the project, I attempted to do everything on the same deployment file and therefore on the same pod. However, I encountered an error. When my Apache and MySQL were started, the phpMyAdmin kept restarting in a loop and remained stuck in orange. After my Apache was killed, phpMyAdmin started, but the problem was reversed.
 
-##Solution
+## Solution
 
 My issue was due to the fact that phpMyAdmin uses port 80, just like Apache. Even if I exposed port 8080 on phpMyAdmin, its Docker image does not allow it to be configured on a port other than 80. Check out the phpMyAdmin documentation on Docker: https://hub.docker.com/r/phpmyadmin/phpmyadmin/.
 
