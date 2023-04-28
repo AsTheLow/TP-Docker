@@ -1,15 +1,19 @@
 # TP-Docker-Gautherot-Lantillon
 ## The prerequisites to launch your assignment on Minikube are:
 
-Minikube
-Lens (to view the details of Minikube easily)
+- Minikube
+- Lens (to view the details of Minikube easily)
 
 Please note that Lens is optional but recommended for a better experience.
 
-Firstly, you need to install Minikube with the following command [the command you should retrieve from Notion].
+Firstly, you need to install Minikube (https://kubernetes.io/fr/docs/tasks/tools/install-minikube/).
+Personally, my Minikube was installed using "installme", which is a YAML file created by my company. It is an application packaging and when launched, everything is installed at once.
 Next, it is recommended to install Lens as it provides a simpler way to view the details of Minikube. You can create an account on Lens to be able to connect to it.
 
 Once everything is installed, you can start Minikube by running the command <sup>"minikube start</sup>.
+
+Once your Minikube is launched, you can then connect to Lens and access your Minikube interface, which should be empty except for some default files.
+
 ## Automatic deployment of Docker containers.
 Firstly, we will use the command "docker run --name apache bitnami/apache:latest" to fetch the latest Bitnami image from Docker Hub. 
 ![image](https://user-images.githubusercontent.com/118971209/234866025-739ecf71-a57b-41e9-8455-f04b91441d9d.png)
