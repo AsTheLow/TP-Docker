@@ -40,6 +40,45 @@ To summarize in my own words, a deployment is a file that is applied to create d
 
 ![image](https://user-images.githubusercontent.com/118971209/235268997-10bceebe-9eb4-4aad-8957-bdb6c6b9a51e.png)
 
+## PhpMyAdmin X MySql
+Now that our containers are up and running and all showing green, we want to verify that our PhpMyAdmin is properly connected to our MySQL database.
+![image](https://user-images.githubusercontent.com/118971209/235304196-435d2488-a852-4a35-9242-55770acb96ae.png) 
+Pour vous connectez il vous suffit de cliquer sur le lien bleu la redirection est faite grâce automatiquement.
+![image](https://user-images.githubusercontent.com/118971209/235304366-87a21530-5292-47e1-acfc-42fe6d855b98.png)
+This redirection is created at the network level and port forwarding. Here, we can see that our redirection is active, which makes it easy to connect without much complexity. ![image](https://user-images.githubusercontent.com/118971209/235304561-c5720343-e69b-4f1c-9f56-6fed99289b9d.png)
+( Google def : Port forwarding is a feature that allows incoming network traffic to be redirected to a specific port on a Kubernetes node or container, to a local port on your machine.) 
+Once on the PhpMyAdmin page, the login credentials are :
+user : root 
+password : password 
+defined in the YAML file (also in the MySQL container)
+![image](https://user-images.githubusercontent.com/118971209/235305351-a56c2882-7a7c-49f8-bb25-ae41a38731ea.png)
+![image](https://user-images.githubusercontent.com/118971209/235305450-127b1efa-39cc-4042-b708-f8c267e7215e.png)
+You are now connected and can see your SQL database!
+![image](https://user-images.githubusercontent.com/118971209/235305594-313554fb-e6db-4dec-b7df-d82da09ff15d.png)
+
+
+
+
+### Additional information  
+
+
+PHPMyAdmin is a popular and widely used MySQL database management tool in web development. It provides a user-friendly web interface to administer MySQL databases.
+
+In the code you shared, the deployments of PHPMyAdmin and MySQL are connected together because PHPMyAdmin requires a MySQL database to store its data and configuration settings. The environment variable "PMA_HOST" is used to specify the name of the MySQL service that PHPMyAdmin will connect to. The MySQL service must be accessible from the same Kubernetes cluster for PHPMyAdmin to successfully connect to the MySQL database.
+
+#### Detail 
+CPU: Shows the current CPU usage of the PhpMyAdmin container.
+Memory: Shows the current memory usage of the PhpMyAdmin container.
+Filesystem: Shows the current filesystem usage of the PhpMyAdmin container.
+Metrics not available at the moment: Indicates that there are no metrics available for the container at the moment.
+Status: Shows the current status of the container, which is "running" and "ready".
+Last Status: Shows the last status of the container, which was "terminated" due to an error with an exit code of 255. It also displays the start and end times of the container.
+Image: Shows the image used to create the container, which is "phpmyadmin/phpmyadmin".
+ImagePullPolicy: Shows the policy used to pull the image, which is "Always".
+Ports: Shows the exposed port of the container, which is "80/TCP".
+Environment: Shows the environment variables used by the container, which are "MYSQL_ROOT_PASSWORD" set to "password", "PMA_HOST" set to "mysql-service", and "PMA_PORT" set to "3306".
+Mounts: Shows the mounted volumes used by the container, which is "/var/run/secrets/kubernetes.io/serviceaccount" mounted from "kube-api-access-v64hb" with read-only permission.
+Liveness: Shows the liveness probe configuration for the container, which is an HTTP GET request to "http://:80/delay=30s" with a timeout of 5 seconds and a period of 10 seconds. The probe will consider the container as healthy if it receives a success response code of 1, and will consider it as unhealthy if it receives a failure response code of 3.
 
 # Waterloo Algorithmics
 
