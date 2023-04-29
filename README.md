@@ -45,8 +45,10 @@ Now that our containers are up and running and all showing green, we want to ver
 ![image](https://user-images.githubusercontent.com/118971209/235304196-435d2488-a852-4a35-9242-55770acb96ae.png) 
 Pour vous connectez il vous suffit de cliquer sur le lien bleu la redirection est faite grâce automatiquement.
 ![image](https://user-images.githubusercontent.com/118971209/235304366-87a21530-5292-47e1-acfc-42fe6d855b98.png)
-This redirection is created at the network level and port forwarding. Here, we can see that our redirection is active, which makes it easy to connect without much complexity. ![image](https://user-images.githubusercontent.com/118971209/235304561-c5720343-e69b-4f1c-9f56-6fed99289b9d.png)
+This redirection is created at the network level and port forwarding. Here, we can see that our redirection is active, which makes it easy to connect without much complexity. 
+![image](https://user-images.githubusercontent.com/118971209/235304561-c5720343-e69b-4f1c-9f56-6fed99289b9d.png)
 ( Google def : Port forwarding is a feature that allows incoming network traffic to be redirected to a specific port on a Kubernetes node or container, to a local port on your machine.) 
+
 Once on the PhpMyAdmin page, the login credentials are :
 user : root 
 password : password 
