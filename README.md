@@ -59,14 +59,14 @@ You are now connected and can see your SQL database!
 
 
 
-### Additional information  
+### Additional information 
 
 
 PHPMyAdmin is a popular and widely used MySQL database management tool in web development. It provides a user-friendly web interface to administer MySQL databases.
 
 In the code you shared, the deployments of PHPMyAdmin and MySQL are connected together because PHPMyAdmin requires a MySQL database to store its data and configuration settings. The environment variable "PMA_HOST" is used to specify the name of the MySQL service that PHPMyAdmin will connect to. The MySQL service must be accessible from the same Kubernetes cluster for PHPMyAdmin to successfully connect to the MySQL database.
 
-#### Detail 
+#### Detail on Lens and my container PhpMyAdmin
 CPU: Shows the current CPU usage of the PhpMyAdmin container.
 Memory: Shows the current memory usage of the PhpMyAdmin container.
 Filesystem: Shows the current filesystem usage of the PhpMyAdmin container.
