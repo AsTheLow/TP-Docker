@@ -21,6 +21,9 @@ spec:
           volumeMounts:
             - name: web-content
               mountPath: /usr/local/apache2/htdocs/
+            - name: apache-config
+              mountPath: /usr/local/apache2/htdocs/index.html
+              subPath: index.html
           livenessProbe:
             httpGet:
               port: 80
@@ -32,7 +35,28 @@ spec:
         - name: web-content
           hostPath:
             path: /path/to/local/web/content
+        - name: apache-config
+          configMap:
+            name: apache-config
       restartPolicy: Always
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: apache-config
+data:
+  index.html: |
+    <html>
+      <head>
+        <title>My Custom Page</title>
+      </head>
+      <body>
+        <h1>Welcome to my custom page!</h1>
+      </body>
+    </html>
+
 ---
 apiVersion: apps/v1
 kind: Deployment
