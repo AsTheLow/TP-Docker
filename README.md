@@ -60,9 +60,19 @@ You are now connected and can see your SQL database!
 
 ## Apache configuration 
 
-Now that my Lamp infrastructure is up and running, I am not satisfied with the fact that my Apache page is not displaying anything. Therefore, I need to create a configmap YAML file that will allow me to create an index page. After applying this change, I will need to modify my code to point to this configmap to have my page displayed.
+Now that my Lamp infrastructure is up and running, I am not satisfied with the fact that my Apache page is not displaying anything.
+
 ![image](https://user-images.githubusercontent.com/118971209/235306676-7a8f62e0-0973-4184-860a-4dab27842a0d.png)
 
+I will explain how I added the ConfigMap and made the necessary modifications in the Apache section of our deployment.
+
+Firstly, I created a new YAML file for the ConfigMap. In this file, I specified the name and data to include. In our case, I added a key "index.html" with the HTML content that I wanted to display on the homepage of our website.
+
+Next, I modified our deployment file to include a reference to this ConfigMap. I added a new volume "apache-config" with a reference to the ConfigMap that I just created. I also added a new volumeMount for our Apache container to mount the index.html file from this ConfigMap.
+
+Once these modifications are made, our Apache deployment will be able to mount and display the HTML file from the ConfigMap we created, instead of using the default file that comes with the Apache image.
+
+![image](https://user-images.githubusercontent.com/118971209/235309166-c312bbb4-3f38-4ce2-a895-cd11ceda3238.png)
 
 
 ### Additional information 
