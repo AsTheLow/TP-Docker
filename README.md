@@ -58,6 +58,10 @@ defined in the YAML file (also in the MySQL container)
 You are now connected and can see your SQL database!
 ![image](https://user-images.githubusercontent.com/118971209/235305594-313554fb-e6db-4dec-b7df-d82da09ff15d.png)
 
+## Apache configuration 
+
+Now that my Lamp infrastructure is up and running, I am not satisfied with the fact that my Apache page is not displaying anything. Therefore, I need to create a configmap YAML file that will allow me to create an index page. After applying this change, I will need to modify my code to point to this configmap to have my page displayed.
+![image](https://user-images.githubusercontent.com/118971209/235306676-7a8f62e0-0973-4184-860a-4dab27842a0d.png)
 
 
 
