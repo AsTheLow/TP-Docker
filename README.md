@@ -95,20 +95,34 @@ Once these modifications are made, our Apache deployment will be able to mount a
 # Clean your environnement 
 
 It is recommended to delete a Kubernetes namespace once it is no longer in use. Deleting a namespace will result in the deletion of all resources associated with it, including deployments, services, pods, configMaps, secrets, and any other resources created within that namespace. It is therefore important to ensure that all necessary resources have been backed up before proceeding with the deletion of the namespace.
-You just need to use this command : 
-
-<sup>kubectl delete namespace tdgadrat </sup>
-![image](https://user-images.githubusercontent.com/118971209/235355152-0c47b362-f35a-44b2-92b9-26a53a56c012.png)
+You just need to use this command : kubectl delete namespace tdgadrat  
+![image](https://user-images.githubusercontent.com/118971209/235355152-0c47b362-f35a-44b2-92b9-26a53a56c012.png)  
 Now you can see that everything is deleted, but in Network and Port Forwarding, you may still see the old redirection. In this case, you need to delete it manually.
 ![image](https://user-images.githubusercontent.com/118971209/235355307-d6e79d39-d88d-4c36-ad59-ddcd37061c6b.png)
 
+# To conclude  
+
+To conclude, I really enjoyed working on this project, which is why I made commits at 1 am :) I think it's already optimized, but I believe it can be further improved by removing the livenessProbe part, which isn't very useful for a lab, and adding a secret file to store confidential information encrypted. However, with the remaining time, I don't think I can develop that. I hope the documentation is clear enough, and I've tried to follow it step by step. If you have any questions during the lab, don't hesitate to contact me or ask questions during your next class session.  
+
+The following are just some additional thoughts that didn't necessarily fit into the lab, but they confirm my choices and how I thought about building my code.  
+
+## For further  
+
+### Code explain  
+
+This code is a YAML configuration file that defines three Kubernetes deployments for a LAMP (Linux, Apache, MySQL, PHP) stack.
+
+The first deployment is for an Apache web server. It specifies that the deployment should create one replica of the container and use a selector to identify the pod(s) to manage. The container image used is "httpd:latest", which is the latest version of the Apache HTTP server. It also specifies that the container should listen on port 80, and the contents of the web server should be mounted from a volume at "/path/to/local/web/content". Additionally, a custom "index.html" file is mounted from a ConfigMap named "apache-config". The liveness probe is set up to check the container's health by sending an HTTP GET request to port 80 every 10 seconds.  
+
+The second deployment is for a MySQL database. It specifies that the deployment should create one replica of the container and use a selector to identify the pod(s) to manage. The container image used is "mysql:latest", which is the latest version of the MySQL database. It also specifies that the container should listen on port 3306 and that the data should be stored on a volume mounted at "/path/to/local/mysql/data". The liveness probe is set up to check the container's health by sending a TCP socket request to port 3306 every 10 seconds.  
+
+The third deployment is for PHPMyAdmin, a popular web-based MySQL database management tool. It specifies that the deployment should create one replica of the container and use a selector to identify the pod(s) to manage. The container image used is "phpmyadmin/phpmyadmin". It also specifies that the container should listen on port 80 and that it should connect to the MySQL database service named "mysql-service" with the root password "password". The liveness probe is set up to check the container's health by sending an HTTP GET request to port 80 every 10 seconds.  
 
 ### Additional information 
 
-
 PHPMyAdmin is a popular and widely used MySQL database management tool in web development. It provides a user-friendly web interface to administer MySQL databases.
 
-In the code you shared, the deployments of PHPMyAdmin and MySQL are connected together because PHPMyAdmin requires a MySQL database to store its data and configuration settings. The environment variable "PMA_HOST" is used to specify the name of the MySQL service that PHPMyAdmin will connect to. The MySQL service must be accessible from the same Kubernetes cluster for PHPMyAdmin to successfully connect to the MySQL database.
+In the code i'm shared, the deployments of PHPMyAdmin and MySQL are connected together because PHPMyAdmin requires a MySQL database to store its data and configuration settings. The environment variable "PMA_HOST" is used to specify the name of the MySQL service that PHPMyAdmin will connect to. The MySQL service must be accessible from the same Kubernetes cluster for PHPMyAdmin to successfully connect to the MySQL database.
 
 #### Detail on Lens and my container PhpMyAdmin
 CPU: Shows the current CPU usage of the PhpMyAdmin container.
