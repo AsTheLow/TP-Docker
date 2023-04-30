@@ -59,9 +59,9 @@ The "apache-service" service exposes port 80 used by the Apache web server. The 
 In short, this YAML configuration file is used to define Kubernetes services that allow users to access applications running in specific pods using defined ports.
 
 ## PhpMyAdmin X MySql
-Now that our containers are up and running and all showing green, we want to verify that our PhpMyAdmin is properly connected to our MySQL database.
+Now that our containers are up and running and all showing green, we want to verify that our PhpMyAdmin is properly connected to our MySQL database. Go on Lens in Workloads and Pods
 ![image](https://user-images.githubusercontent.com/118971209/235304196-435d2488-a852-4a35-9242-55770acb96ae.png) 
-Pour vous connectez il vous suffit de cliquer sur le lien bleu la redirection est faite grâce automatiquement.
+To connect, simply click on the blue link and the redirection will be automatically done.
 ![image](https://user-images.githubusercontent.com/118971209/235304366-87a21530-5292-47e1-acfc-42fe6d855b98.png)
 This redirection is created at the network level and port forwarding. Here, we can see that our redirection is active, which makes it easy to connect without much complexity. 
 ![image](https://user-images.githubusercontent.com/118971209/235304561-c5720343-e69b-4f1c-9f56-6fed99289b9d.png)
