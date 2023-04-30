@@ -74,6 +74,16 @@ Once these modifications are made, our Apache deployment will be able to mount a
 
 ![image](https://user-images.githubusercontent.com/118971209/235309166-c312bbb4-3f38-4ce2-a895-cd11ceda3238.png)
 
+# Clean your environnement 
+
+It is recommended to delete a Kubernetes namespace once it is no longer in use. Deleting a namespace will result in the deletion of all resources associated with it, including deployments, services, pods, configMaps, secrets, and any other resources created within that namespace. It is therefore important to ensure that all necessary resources have been backed up before proceeding with the deletion of the namespace.
+You just need to use this command : 
+
+<sup>kubectl delete namespace tdgadrat </sup>
+![image](https://user-images.githubusercontent.com/118971209/235355152-0c47b362-f35a-44b2-92b9-26a53a56c012.png)
+Now you can see that everything is deleted, but in Network and Port Forwarding, you may still see the old redirection. In this case, you need to delete it manually.
+![image](https://user-images.githubusercontent.com/118971209/235355307-d6e79d39-d88d-4c36-ad59-ddcd37061c6b.png)
+
 
 ### Additional information 
 
