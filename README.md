@@ -1,44 +1,62 @@
 # TP-Docker-Gautherot-Lantillon
-We were unable to execute commands on a Windows environment, so we decided to switch to my work machine, which has an Ubuntu 22.04 OS and a Minikube installation, my test environment for my tutor project, as well as Len, which allows me to have a graphical interface of what I am doing
+We were unable to execute commands on a Windows environment, so we decided to switch to my work machine, which has an Ubuntu 22.04 OS and a Minikube installation, my test environment for my tutor project, as well as Len, which allows me to have a graphical interface of what I am doing  
 ## The prerequisites to launch your assignment on Minikube are:
 
-- Minikube
-- Lens (to view the details of Minikube easily)
-Please note that Lens is optional but recommended for a better experience.
-- Kubectl (Optional) (https://github.com/AsTheLow/TP-Docker-Gautherot-Lantillon/blob/main/README.md#kubectl-configure-optional)
+- Minikube  
+- Lens (to view the details of Minikube easily)  
+Please note that Lens is optional but recommended for a better experience.  
+- Kubectl (Optional) (https://github.com/AsTheLow/TP-Docker-Gautherot-Lantillon/blob/main/README.md#kubectl-configure-optional)  
 
 # Install Minikube
 Firstly, you need to install Minikube (https://kubernetes.io/fr/docs/tasks/tools/install-minikube/).
-Personally, my Minikube was installed using "installme", which is a YAML file created by my company. It is an application packaging and when launched, everything is installed at once.
-Next, it is recommended to install Lens as it provides a simpler way to view the details of Minikube. You can create an account on Lens to be able to connect to it.
+Personally, my Minikube was installed using "installme", which is a YAML file created by my company. It is an application packaging and when launched, everything is installed at once.  
+Next, it is recommended to install Lens as it provides a simpler way to view the details of Minikube. You can create an account on Lens to be able to connect to it.  
 
-Once everything is installed, you can start Minikube by running the command <sup>"minikube start</sup>.
+Once everything is installed, you can start Minikube by running the command <sup>"minikube start</sup>.  
 
-Once your Minikube is launched, you can then connect to Lens and access your Minikube interface, which should be empty except for some default files.
+Once your Minikube is launched, you can then connect to Lens and access your Minikube interface, which should be empty except for some default files.  
 
-/!\ I use Minikube v1.27.0. I don't know if it makes any difference for the assignment.
+/!\ I use Minikube v1.27.0. I don't know if it makes any difference for the assignment.  
 
 # Minikube
-To start your Minikube cluster, you can use the command "minikube start".
+To start your Minikube cluster, you can use the command "minikube start".  
 ## Create namespace 
-First, I will create a new namespace to avoid conflicts with my other namespaces in the project using the command 'kubectl create namespace tdgadrat'. The namespace name will be tdgadrat.
+First, I will create a new namespace to avoid conflicts with my other namespaces in the project using the command 'kubectl create namespace tdgadrat'. The namespace name will be tdgadrat.  
 ![image](https://user-images.githubusercontent.com/118971209/234888731-002f8ab6-4198-4693-b535-c9f6b2654379.png)
 ## Lens 
 Now that you have successfully created your namespace, you can either use the command <sup>"kubectl get namespace tdgadrat"</sup> to verify its existence or connect to Lens for a graphical view. 
 ![image](https://user-images.githubusercontent.com/118971209/235267323-db296b8e-7d38-4afd-82b0-87d17cef6b33.png)
-(To connect to Lens, simply click on "Mi".![image](https://user-images.githubusercontent.com/118971209/235267462-a24887c1-6f81-4a61-9200-d568f74b0253.png)
-On Minikube, you can access Lens by navigating to "Workload" and then selecting "Overview". Lens should display your default namespace as well as any other namespaces that you have created.
+(To connect to Lens, simply click on "Mi".![image](https://user-images.githubusercontent.com/118971209/235267462-a24887c1-6f81-4a61-9200-d568f74b0253.png)  
+On Minikube, you can access Lens by navigating to "Workload" and then selecting "Overview". Lens should display your default namespace as well as any other namespaces that you have created. 
 ![image](https://user-images.githubusercontent.com/118971209/235267534-9d5c3c49-2b64-48ef-9887-b4ac17c388b3.png)
 ## Deployments
-Deployments on Minikube are used to manage the state and availability of containerized applications running on a Kubernetes cluster. Deployments provide a declarative way to define the desired state of a set of pods and ensure that the desired number of replicas are running at all times. Deployments also support rolling updates and rollbacks to ensure that application updates are deployed with minimal downtime and can be quickly rolled back if necessary.
-To apply the "lamp-deployment.yaml" file to Minikube, you need to run the following command: <sup>"kubectl apply -f lamp-deployment.yaml -n tdgadrat"</sup> and <sup>kubectl get deployment -n tdgadrat</sup> for see if run :) 
+
+Deployments in Minikube are used to manage the state and availability of containerized applications running on a Kubernetes cluster. Deployments provide a declarative way to define the desired state of a set of pods and ensure that the desired number of replicas are running at all times. Deployments also support rolling updates and rollbacks to ensure that application updates are deployed with minimal downtime and can be quickly rolled back if necessary.  
+
+1. To apply the "lamp-deployment.yaml" file to Minikube, you first need to download the files "lamp-deployment.yaml" and "lamp-service.yaml" from the git repository and save them on your local machine. Then, open a terminal at the location of the files (or navigate to the directory using the command "cd /path/to/folder").  
+OR  
+If you are unable to copy the YAML files, you can copy the YAML code on my Git and navigate to your working directory in the terminal (cd). Then, use a text editor like nano or vim to create a new file named "lamp-deployment.yaml" and paste the YAML code into the file.  
+
+Once you are in the directory, you can follow the next step.  
+
+2. To apply the "lamp-deployment.yaml" file to Minikube, you need to run the following command: "kubectl apply -f lamp-deployment.yaml -n tdgadrat" and use "kubectl get deployment -n tdgadrat" to verify that it is running correctly :)
 ![image](https://user-images.githubusercontent.com/118971209/235268236-d74948e8-6bc0-403c-ac2e-985fb21d4947.png)
 You can see that the deployment has been successful on lens 
 ![image](https://user-images.githubusercontent.com/118971209/235268085-de2705d9-9605-498b-87ce-3d4dec17dc8b.png)
 
-To summarize in my own words, a deployment is a file that is applied to create dependencies, such as multiple pods with one container per pod. In my case, the deployment includes containers for Apache, MySQL, and phpMyAdmin. If you want to remove these pods, you must delete the deployment first, because if a pod is killed, it is automatically recreated by the deployment.
+To summarize in my own words, a deployment is a file that is applied to create dependencies, such as multiple pods with one container per pod. In my case, the deployment includes containers for Apache, MySQL, and phpMyAdmin. If you want to remove these pods, you must delete the deployment first, because if a pod is killed, it is automatically recreated by the deployment.  
 
-![image](https://user-images.githubusercontent.com/118971209/235268997-10bceebe-9eb4-4aad-8957-bdb6c6b9a51e.png)
+![image](https://user-images.githubusercontent.com/118971209/235268997-10bceebe-9eb4-4aad-8957-bdb6c6b9a51e.png)  
+
+## Lamp Services 
+Now that you are a pro at deployment, you can also apply the second services file that is present on the Git repository by following the same procedure. However, to apply this one, you need to run the command "kubectl apply -f lamp-service.yaml -n tdgadrat".  ![image](https://user-images.githubusercontent.com/118971209/235356564-1420b439-2e0a-4900-a3c1-c07c3c846f01.png)
+  This file is a YAML configuration file that defines the creation of three Kubernetes services: "apache-service", "mysql-service", and "phpmyadmin-service".
+
+Each service has a selector that identifies the pods to expose based on their corresponding "app" label ("apache", "mysql", and "phpmyadmin"). Ports are also defined for each service to allow users to access the applications running in the corresponding pods.
+
+The "apache-service" service exposes port 80 used by the Apache web server. The "mysql-service" service exposes port 3306 used by the MySQL database. The "phpmyadmin-service" service exposes port 8080 used by the web user interface of the PHPMyAdmin database management application.
+
+In short, this YAML configuration file is used to define Kubernetes services that allow users to access applications running in specific pods using defined ports.
 
 ## PhpMyAdmin X MySql
 Now that our containers are up and running and all showing green, we want to verify that our PhpMyAdmin is properly connected to our MySQL database.
