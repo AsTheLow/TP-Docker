@@ -1,4 +1,4 @@
-# TP-Docker
+# TP-Lamp-Minikube
 We were unable to execute commands on a Windows environment, so we decided to switch to my work machine, which has an Ubuntu 22.04 OS and a Minikube installation, my test environment for my tutor project, as well as Len, which allows me to have a graphical interface of what I am doing  
 ## The prerequisites to launch your assignment on Minikube are:
 
